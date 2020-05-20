@@ -12,8 +12,10 @@ install:
 
 before_script:
   - 'TODAY="$(date +%Y-%m-%d)"'
+  - 'YEAR="$(date +%Y)"'
+  - 'MONTH="$(date +%m)"'
   - "export NOTES_DIRECTORY=/tmp"
-  - 'NOTES_FILE_PATH="${NOTES_DIRECTORY}/${TODAY}".txt'
+  - 'NOTES_FILE_PATH="${NOTES_DIRECTORY}/${YEAR}/${MONTH}/${TODAY}".txt'
 
 script:
   - "./notes hello"

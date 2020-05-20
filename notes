@@ -14,11 +14,11 @@ set -e
 readonly NOTES_DIRECTORY="${NOTES_DIRECTORY:-"${HOME}/notes"}"
 readonly NOTES_EDITOR="${EDITOR}"
 
+readonly YEAR="$(date +"%Y")"
+readonly MONTH="$(date +"%m")"
 readonly NOTES_FILE="$(date +%Y-%m-%d).md"
-readonly NOTES_PATH="${NOTES_DIRECTORY}/${NOTES_FILE}"
+readonly NOTES_PATH="${NOTES_DIRECTORY}/${YEAR}/${MONTH}/${NOTES_FILE}"
 readonly CURRENT_TIMESTAMP="$(date +"%T %p")"
-
-
 
 if [ ! -d "${NOTES_DIRECTORY}" ]; then
     while true; do
@@ -30,6 +30,30 @@ if [ ! -d "${NOTES_DIRECTORY}" ]; then
         esac
     done
 fi
+
+if [ ! -d "${NOTES_DIRECTORY}/${YEAR}" ]; then
+    while true; do
+        read -rp "${NOTES_DIRECTORY}/${YEAR} does not exist, do you want to create it? (y/n) " yn
+        case "${yn}" in
+            [Yy]* ) mkdir -p "${NOTES_DIRECTORY}/${YEAR}"; break;;
+            [Nn]* ) exit;;
+            * ) echo "Please answer y or n";;
+        esac
+    done
+fi
+
+if [ ! -d "${NOTES_DIRECTORY}/${YEAR}/${MONTH}" ]; then
+    while true; do
+        read -rp "${NOTES_DIRECTORY}/${YEAR}/${MONTH} does not exist, do you want to create it? (y/n) " yn
+        case "${yn}" in
+            [Yy]* ) mkdir -p "${NOTES_DIRECTORY}/${YEAR}/${MONTH}"; break;;
+            [Nn]* ) exit;;
+            * ) echo "Please answer y or n";;
+        esac
+    done
+fi
+
+
 
 echo "${CURRENT_TIMESTAMP}" >> "${NOTES_PATH}"
 

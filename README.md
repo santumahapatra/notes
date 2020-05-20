@@ -4,6 +4,7 @@ My Changelog:
 * Use Markdown instead of text
 * Transition to Daily Format
 * Add Timestamps for Each Entry
+* Add a folder structure in a hierarchical order by year by month
 
 Original Creator Notes are Below
 
