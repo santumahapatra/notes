@@ -2,6 +2,7 @@
 
 My Changelog:
 * Use Markdown instead of text
+* Transition to Daily Format
 
 
 Original Creator Notes are Below
