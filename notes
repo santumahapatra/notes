@@ -16,6 +16,9 @@ readonly NOTES_EDITOR="${EDITOR}"
 
 readonly NOTES_FILE="$(date +%Y-%m-%d).md"
 readonly NOTES_PATH="${NOTES_DIRECTORY}/${NOTES_FILE}"
+readonly CURRENT_TIMESTAMP="$(date +"%T %p")"
+
+
 
 if [ ! -d "${NOTES_DIRECTORY}" ]; then
     while true; do
@@ -27,6 +30,8 @@ if [ ! -d "${NOTES_DIRECTORY}" ]; then
         esac
     done
 fi
+
+echo "${CURRENT_TIMESTAMP}" >> "${NOTES_PATH}"
 
 if [ ${#} -eq 0 ]; then
     if [ -p "/dev/stdin" ]; then

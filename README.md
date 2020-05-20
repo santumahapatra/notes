@@ -3,7 +3,7 @@
 My Changelog:
 * Use Markdown instead of text
 * Transition to Daily Format
-
+* Add Timestamps for Each Entry
 
 Original Creator Notes are Below
 
